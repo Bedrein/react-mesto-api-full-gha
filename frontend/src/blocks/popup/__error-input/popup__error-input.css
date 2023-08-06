@@ -1,0 +1,15 @@
+.popup__error-input {
+  height: 24px;
+  margin-top: 5px;
+  margin-bottom: 13px;
+
+  color: red;
+  display: block;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.popup__error-input:last-child {
+  margin-bottom: 0;
+}

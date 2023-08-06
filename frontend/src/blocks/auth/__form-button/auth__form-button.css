@@ -1,0 +1,14 @@
+.auth__form-button {
+  margin-top: 186px;
+  padding: 0;
+  height: 50px;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+}
+
+.auth__form-button-enter:hover {
+  opacity: 0.8;
+}

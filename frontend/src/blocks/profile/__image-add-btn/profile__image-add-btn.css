@@ -1,0 +1,14 @@
+.profile__image-add-btn {
+	border: 2px solid #fff;
+	padding: 12px 62px;
+	border-radius: 2px;
+}
+
+@media screen and (max-width: 1100px) {
+  .profile__image-add-btn {
+		padding: 15px 131px;
+		width: 16px;
+		height: 16px;
+  }
+}
+

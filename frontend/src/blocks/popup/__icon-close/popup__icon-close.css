@@ -1,0 +1,10 @@
+.popup__icon-close {
+	max-height: 32px;
+	
+}
+
+@media screen and (max-width: 550px) {
+  .popup__icon-close {
+		max-width: 20px;
+  }
+}

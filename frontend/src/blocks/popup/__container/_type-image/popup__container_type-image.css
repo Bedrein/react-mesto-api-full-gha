@@ -1,0 +1,8 @@
+.popup__container_type-image {
+  background: rgba(0, 0, 0, 0);
+  box-shadow: 0;
+  border-radius: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

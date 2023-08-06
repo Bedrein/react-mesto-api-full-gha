@@ -1,0 +1,6 @@
+.element__button-heart_active {
+  opacity: 1;
+  background-repeat: no-repeat;
+  background-position: bottom 20px left 6px;
+  background-image: url(../../../../images/heart-black.svg);
+}

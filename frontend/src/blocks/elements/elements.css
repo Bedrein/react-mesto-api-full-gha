@@ -1,0 +1,13 @@
+.elements {
+	margin: 0 auto;
+	max-width: 880px;
+	padding-bottom: 67px;
+	box-sizing: border-box;
+}
+
+@media screen and (max-width: 900px) {
+  .elements {
+		max-width: 282px;
+		padding-bottom: 48px;
+  }
+}

@@ -1,0 +1,10 @@
+.element__button-heart {
+	padding-right: 5px;
+	border: 0;
+	background-color: #fff;
+}
+
+.element__button-heart:hover {
+	opacity: 0.5;
+	cursor: pointer;
+}
