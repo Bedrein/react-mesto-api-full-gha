@@ -5,11 +5,10 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function Card({ card, onCardClick, onCardLike, onCardDelete }) {
   const currentUser = useContext(CurrentUserContext);
-  const isOwn = card.owner._id === currentUser._id;
-  const isLiked = card.likes.some((i) => i._id === currentUser._id);
-  const cardLikeButtonClassName = `element__button-heart ${
-    isLiked && 'element__button-heart_active'
-  }`;
+  const isOwn = card.owner === currentUser._id;
+  const isLiked = card.likes.some(id => id === currentUser._id);
+
+	const cardLikeButtonClassName = (`element__button-heart ${isLiked && 'element__button-heart_active'}`);
   const handleClick = () => {
     onCardClick(card);
   };
@@ -37,6 +36,7 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
           className="element__button-delete">
           <img src={trashIcon} alt="Урна" className="element__icon-trach" />
         </button>
+				
       )}
       <div className="description">
         <h2 className="element__text">{card.name}</h2>

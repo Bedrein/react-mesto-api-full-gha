@@ -1,4 +1,5 @@
 const JWT_SECRET = 'some_secret';
+const NODE_ENV = 'production'
 const ERROR_BAD_REQUEST = 400;
 const ERROR_AUTH = 401;
 const ERROR_FORBIDDEN = 403;
@@ -14,4 +15,5 @@ module.exports = {
   ERROR_NOUNIQUE,
   ERROR_DEFAULT,
   JWT_SECRET,
+  NODE_ENV,
 };

@@ -44,6 +44,7 @@ class Api {
       headers: this._options.headers,
     }).then((res) => this._checkPrommis(res));
   }
+	
 
   postNewCard(data) {
     return fetch(`${this._options.baseUrl}/cards`, {
@@ -73,25 +74,28 @@ class Api {
     }).then((res) => this._checkPrommis(res));
   }
 
-  putlikeCard(idCard) {
-    return fetch(`${this._options.baseUrl}/cards/${idCard}/likes`, {
-      method: 'PUT',
-      headers: this._options.headers,
-    }).then((res) => this._checkPrommis(res));
-  }
-
-  deleteLikeCard(idCard) {
-    return fetch(`${this._options.baseUrl}/cards/${idCard}/likes`, {
-      method: 'DELETE',
-      headers: this._options.headers,
-    }).then((res) => this._checkPrommis(res));
-  }
+	changeLike(idCard, isLiked) {
+		if (!isLiked) {
+			return fetch(`${this._options.baseUrl}/cards/${idCard}/likes`, {
+				method: 'DELETE',
+				headers: this._options.headers,
+			}).then((res) => this._checkPrommis(res));
+				}
+					else {
+						return fetch(`${this._options.baseUrl}/cards/${idCard}/likes`, {
+							method: 'PUT',
+							headers: this._options.headers,
+						}).then((res) => this._checkPrommis(res));
+					}
+		}
 }
 
 const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-64',
+  //baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-64',
+  baseUrl: 'http://localhost:3001',
+
   headers: {
-    authorization: '74d0f924-7041-4c9b-b945-e0bc2747bd20',
+    'authorization': `Bearer ${localStorage.getItem('jwt')}`,
     'Content-Type': 'application/json',
   },
 });

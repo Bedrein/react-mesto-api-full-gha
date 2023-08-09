@@ -10,7 +10,6 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
   //пустой инпут
   useEffect(() => {
     inputAvatar.current.value = '';
-    console.log(inputAvatar.current.value);
   }, [isOpen]);
 
   function handleSubmit(evt) {

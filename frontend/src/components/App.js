@@ -47,6 +47,8 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState({});
 
+	const [cards, setCards] = useState([]);
+
   useEffect(() => {
     api
       .getProfileInfo()
@@ -58,7 +60,7 @@ function App() {
       });
   }, []);
 
-  const [cards, setCards] = useState([]);
+  
 
   useEffect(() => {
     api
@@ -106,11 +108,15 @@ function App() {
   // обработчик проверки пользователя в localStorage
   function handleCheckToken() {
     const jwt = localStorage.getItem('jwt');
+	
+
     if (jwt) {
+
       auth
         .checkToken(jwt)
-        .then(({ data }) => {
-          setUserEmail(data.email);
+        .then((res) => {
+				
+          setUserEmail(res.email);
           setIsLoggedIn(true);
           navigate('/', { replace: true });
         })
@@ -120,6 +126,7 @@ function App() {
 
   useEffect(() => {
     handleCheckToken();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Обработчик выхода пользователя
@@ -163,20 +170,15 @@ function App() {
   }
 
   function handleCardLike(card) {
-    // Снова проверяем, есть ли уже лайк на этой карточке
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
-
-    // Отправляем запрос в API и получаем обновлённые данные карточки
+		const isLiked = card.likes.some(id => id === currentUser._id);
     api
-      .putlikeCard(card._id, !isLiked)
+      .changeLike(card._id, !isLiked)
       .then((newCard) => {
         setCards((state) =>
           state.map((c) => (c._id === card._id ? newCard : c))
         );
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((error) => console.log(`Ошибка: ${error}`));
   }
 
   function handleCardDelete(card) {

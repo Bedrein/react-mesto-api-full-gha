@@ -9,12 +9,12 @@ const createCard = (req, res, next) => {
   } = req.body;
 
   const owner = req.user._id;
+
   Card.create({
     name,
     link,
     owner,
   })
-
     .then((card) => {
       res.status(201).send(card);
     })
@@ -29,9 +29,7 @@ const createCard = (req, res, next) => {
 
 const getCards = (_req, res, next) => {
   Card.find({})
-    .then((cards) => {
-      res.send({ cards });
-    })
+    .then((cards) => res.send(cards))
     .catch(next);
 };
 
@@ -86,6 +84,7 @@ const dislikeCard = (req, res, next) => {
     { $pull: { likes: req.user._id } },
     { new: true },
   )
+
     .then((card) => {
       if (!card) {
         next(new NotFoundError('Карточка не найдена'));
