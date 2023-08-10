@@ -1,5 +1,4 @@
-const JWT_SECRET = 'some_secret';
-const NODE_ENV = 'production'
+const { PORT = 3001, MONGO_DB = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
 const ERROR_BAD_REQUEST = 400;
 const ERROR_AUTH = 401;
 const ERROR_FORBIDDEN = 403;
@@ -14,6 +13,6 @@ module.exports = {
   ERROR_NOT_FOUND,
   ERROR_NOUNIQUE,
   ERROR_DEFAULT,
-  JWT_SECRET,
-  NODE_ENV,
+  PORT,
+  MONGO_DB,
 };
