@@ -5,7 +5,8 @@ const NotFoundError = require('../utils/errors/NotFoundError');
 const AuthError = require('../utils/errors/authError');
 const BadRequestError = require('../utils/errors/badRequestError');
 const NouniqueError = require('../utils/errors/NouniqueError');
-const { JWT_SECRET } = require('../utils/constants');
+
+const { JWT_SECRET } = process.env;
 
 const createUser = (req, res, next) => {
   const {
