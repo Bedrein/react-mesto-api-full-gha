@@ -14,7 +14,7 @@ mongoose.connect(MONGO_DB);
 
 const app = express();
 
-app.use(cors());
+app.use(cors({ origin: ['https://bedrein.nomoreparties.co'] }));
 
 app.use(helmet());
 

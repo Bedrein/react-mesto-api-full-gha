@@ -91,7 +91,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: 'http://api.bedrein.nomoreparties.co',
+  baseUrl: 'https://api.bedrein.nomoreparties.co',
   //baseUrl: 'http://localhost:3001',
 
   headers: {
