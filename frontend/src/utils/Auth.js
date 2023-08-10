@@ -7,7 +7,7 @@
 -функция checkToken - принимает jwt, отправляет запрос на /users/me и возвращает данные пользователя
 */
 
-export const BASE_URL = 'http://localhost:3001';
+export const BASE_URL = 'http://api.bedrein.nomoreparties.co';
 
 // ф-ция проверки результата
 function checkPrommis(res) {

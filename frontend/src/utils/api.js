@@ -91,8 +91,8 @@ class Api {
 }
 
 const api = new Api({
-  //baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-64',
-  baseUrl: 'http://localhost:3001',
+  baseUrl: 'http://api.bedrein.nomoreparties.co',
+  //baseUrl: 'http://localhost:3001',
 
   headers: {
     'authorization': `Bearer ${localStorage.getItem('jwt')}`,
