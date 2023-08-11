@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 51.250.14.26
+IP 51.250.14.26
 
 Frontend https://bedrein.nomoreparties.co/
 
