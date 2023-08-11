@@ -91,8 +91,8 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: 'https://api.bedrein.nomoreparties.co',
-  //baseUrl: 'http://localhost:3001',
+  //baseUrl: 'https://api.bedrein.nomoreparties.co',
+  baseUrl: 'http://localhost:3000',
 
   headers: {
     'authorization': `Bearer ${localStorage.getItem('jwt')}`,
