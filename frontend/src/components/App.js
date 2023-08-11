@@ -50,6 +50,7 @@ function App() {
 	const [cards, setCards] = useState([]);
 
   useEffect(() => {
+		if (isLoggedIn) {
     api
       .getProfileInfo()
       .then((res) => {
@@ -57,12 +58,13 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-      });
-  }, []);
+      })};
+  }, [isLoggedIn]);
 
   
 
   useEffect(() => {
+		if (isLoggedIn) {
     api
       .getInitialCards()
 
@@ -71,8 +73,8 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-      });
-  }, []);
+      })};
+  }, [isLoggedIn]);
 
   // обработчик авторизации пользователя
   function handleLogin(data) {
@@ -86,6 +88,7 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
+				handleInfoTooltipClick(false);
       });
   }
 
