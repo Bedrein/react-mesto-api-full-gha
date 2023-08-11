@@ -6,7 +6,7 @@ const AuthError = require('../utils/errors/authError');
 const BadRequestError = require('../utils/errors/badRequestError');
 const NouniqueError = require('../utils/errors/NouniqueError');
 
-const { JWT_SECRET } = process.env;
+const { JWT_SECRET, NODE_ENV } = process.env;
 
 const createUser = (req, res, next) => {
   const {
@@ -132,7 +132,7 @@ const login = (req, res, next) => {
 
           const token = jwt.sign(
             { _id: user._id },
-            JWT_SECRET,
+            NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
             { expiresIn: '7d' },
           );
           res.send({ token });
