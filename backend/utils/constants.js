@@ -1,4 +1,4 @@
-const { PORT = 3001, MONGO_DB = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
+const { PORT = 3000, MONGO_DB = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
 const ERROR_BAD_REQUEST = 400;
 const ERROR_AUTH = 401;
 const ERROR_FORBIDDEN = 403;
