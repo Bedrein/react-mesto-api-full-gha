@@ -14,7 +14,6 @@ import Register from './Register';
 import ProtectedRoute from './ProtectedRoute';
 import InfoTooltip from './InfoTooltip';
 import * as auth from '../utils/Auth';
-
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
@@ -49,32 +48,26 @@ function App() {
 
 	const [cards, setCards] = useState([]);
 
-  useEffect(() => {
-		if (isLoggedIn) {
-    api
-      .getProfileInfo()
-      .then((res) => {
-        setCurrentUser(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      })};
-  }, [isLoggedIn]);
-
-  
+	useEffect(() => {
+    handleCheckToken();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
 		if (isLoggedIn) {
-    api
-      .getInitialCards()
-
-      .then((res) => {
-        setCards(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      })};
-  }, [isLoggedIn]);
+			Promise.all([
+				api.getProfileInfo(),
+				api.getInitialCards()
+			])
+			.then(([profileRes, cardsRes]) => {
+				setCurrentUser(profileRes);
+				setCards(cardsRes);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+		}
+	}, [isLoggedIn]);
 
   // обработчик авторизации пользователя
   function handleLogin(data) {
@@ -84,12 +77,15 @@ function App() {
         localStorage.setItem('jwt', res.token);
         setUserEmail(data.email);
         setIsLoggedIn(true);
-        navigate('/', { replace: true });
+        navigate('/');
       })
+
+			
       .catch((err) => {
         console.log(err);
 				handleInfoTooltipClick(false);
       });
+			
   }
 
   /** обработчик регистрации пользователя */
@@ -112,9 +108,7 @@ function App() {
   function handleCheckToken() {
     const jwt = localStorage.getItem('jwt');
 	
-
     if (jwt) {
-
       auth
         .checkToken(jwt)
         .then((res) => {
@@ -126,11 +120,6 @@ function App() {
         .catch((err) => console.log(err));
     }
   }
-
-  useEffect(() => {
-    handleCheckToken();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   // Обработчик выхода пользователя
   function handleLogout() {

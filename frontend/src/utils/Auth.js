@@ -38,8 +38,6 @@ export const login = ({ email, password }) => {
   }).then((res) => checkPrommis(res))
 };
 
-
-
 export const checkToken = (token) => {
 	return fetch(`${BASE_URL}/users/me`, {
 method: 'GET',
