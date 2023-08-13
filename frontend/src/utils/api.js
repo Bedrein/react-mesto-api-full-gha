@@ -92,10 +92,10 @@ class Api {
 
 const api = new Api({
   baseUrl: 'https://api.bedrein.nomoreparties.co',
-  //baseUrl: 'http://localhost:3000',
+  //baseUrl: 'http://localhost:3001',
 
   headers: {
-    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+    'authorization': `Bearer ${localStorage.getItem('token')}`,
     'Content-Type': 'application/json',
   },
 });

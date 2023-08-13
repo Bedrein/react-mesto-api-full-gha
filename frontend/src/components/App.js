@@ -26,7 +26,7 @@ function App() {
 
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
 
-  //Открытие popupAvatar если true
+  //Открытие popupAvatar если trueauth
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
 
   const [isConfirmDeletePopupOpen, setIsConfirmDeletePopupOpen] =
