@@ -74,7 +74,7 @@ function App() {
     return auth
       .login(data)
       .then((res) => {
-        localStorage.setItem('jwt', res.token);
+        localStorage.setItem('token', res.token);
         setUserEmail(data.email);
         setIsLoggedIn(true);
         navigate('/');
@@ -93,7 +93,6 @@ function App() {
     return auth
       .register(data)
       .then((res) => {
-        console.log('boom');
         setIsSuccessInfoTooltipStatus(true);
         handleInfoTooltipClick();
         navigate('/sign-in');
@@ -106,16 +105,16 @@ function App() {
 
   // обработчик проверки пользователя в localStorage
   function handleCheckToken() {
-    const jwt = localStorage.getItem('jwt');
+    const token = localStorage.getItem('token');
 	
-    if (jwt) {
+    if (token) {
       auth
-        .checkToken(jwt)
+        .checkToken(token)
         .then((res) => {
 				
           setUserEmail(res.email);
           setIsLoggedIn(true);
-          navigate('/', { replace: true });
+          navigate('/');
         })
         .catch((err) => console.log(err));
     }
@@ -123,7 +122,7 @@ function App() {
 
   // Обработчик выхода пользователя
   function handleLogout() {
-    localStorage.removeItem('jwt');
+    localStorage.removeItem('token');
     setIsLoggedIn(false);
     navigate('/sign-in');
   }

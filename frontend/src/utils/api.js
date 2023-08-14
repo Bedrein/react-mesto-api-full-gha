@@ -12,14 +12,20 @@ class Api {
 
   getProfileInfo() {
     return fetch(`${this._options.baseUrl}/users/me`, {
-      headers: this._options.headers,
+		headers: {
+								"Content-Type": "application/json",
+								authorization: `Bearer ${localStorage.getItem("token")}`,
+		},
     }).then((res) => this._checkPrommis(res));
   }
 
   patchProfileInfo(data) {
     return fetch(`${this._options.baseUrl}/users/me`, {
       method: 'PATCH',
-      headers: this._options.headers,
+      headers: {
+				"Content-Type": "application/json",
+				authorization: `Bearer ${localStorage.getItem("token")}`,
+},
       body: JSON.stringify({
         name: data.name,
         about: data.about,
@@ -30,7 +36,10 @@ class Api {
   patchAvatar(data) {
     return fetch(`${this._options.baseUrl}/users/me/avatar`, {
       method: 'PATCH',
-      headers: this._options.headers,
+			headers: {
+				"Content-Type": "application/json",
+				authorization: `Bearer ${localStorage.getItem("token")}`,
+},
       body: JSON.stringify({
         avatar: data.avatar,
       }),
@@ -41,7 +50,10 @@ class Api {
 
   getInitialCards() {
     return fetch(`${this._options.baseUrl}/cards`, {
-      headers: this._options.headers,
+      headers: {
+				"Content-Type": "application/json",
+				authorization: `Bearer ${localStorage.getItem("token")}`,
+},
     }).then((res) => this._checkPrommis(res));
   }
 	
@@ -49,7 +61,10 @@ class Api {
   postNewCard(data) {
     return fetch(`${this._options.baseUrl}/cards`, {
       method: 'POST',
-      headers: this._options.headers,
+			headers: {
+				"Content-Type": "application/json",
+				authorization: `Bearer ${localStorage.getItem("token")}`,
+},
       body: JSON.stringify({
         name: data.name,
         link: data.link,
@@ -60,7 +75,10 @@ class Api {
   patchEditAvatar(link) {
     return fetch(`${this._options.baseUrl}/users/me/avatar`, {
       method: 'PATCH',
-      headers: this._options.headers,
+			headers: {
+				"Content-Type": "application/json",
+				authorization: `Bearer ${localStorage.getItem("token")}`,
+},
       body: JSON.stringify({
         avatar: link,
       }),
@@ -70,7 +88,10 @@ class Api {
   deleteCard(idCard) {
     return fetch(`${this._options.baseUrl}/cards/${idCard}`, {
       method: 'DELETE',
-      headers: this._options.headers,
+			headers: {
+				"Content-Type": "application/json",
+				authorization: `Bearer ${localStorage.getItem("token")}`,
+},
     }).then((res) => this._checkPrommis(res));
   }
 
@@ -78,13 +99,19 @@ class Api {
 		if (!isLiked) {
 			return fetch(`${this._options.baseUrl}/cards/${idCard}/likes`, {
 				method: 'DELETE',
-				headers: this._options.headers,
+				headers: {
+					"Content-Type": "application/json",
+					authorization: `Bearer ${localStorage.getItem("token")}`,
+},
 			}).then((res) => this._checkPrommis(res));
 				}
 					else {
 						return fetch(`${this._options.baseUrl}/cards/${idCard}/likes`, {
 							method: 'PUT',
-							headers: this._options.headers,
+							headers: {
+								"Content-Type": "application/json",
+								authorization: `Bearer ${localStorage.getItem("token")}`,
+		},
 						}).then((res) => this._checkPrommis(res));
 					}
 		}
@@ -94,10 +121,6 @@ const api = new Api({
   baseUrl: 'https://api.bedrein.nomoreparties.co',
   //baseUrl: 'http://localhost:3001',
 
-  headers: {
-    'authorization': `Bearer ${localStorage.getItem('token')}`,
-    'Content-Type': 'application/json',
-  },
 });
 
 export default api;

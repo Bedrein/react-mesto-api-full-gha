@@ -6,7 +6,7 @@
 
 -функция checkToken - принимает jwt, отправляет запрос на /users/me и возвращает данные пользователя
 */
-//export const BASE_URL = 'http://localhost:3000';
+//export const BASE_URL = 'http://localhost:3001';
 export const BASE_URL = 'https://api.bedrein.nomoreparties.co';
 
 // ф-ция проверки результата
@@ -32,6 +32,7 @@ export const login = ({ email, password }) => {
   return fetch(`${BASE_URL}/signin`, {
     method: 'POST',
     headers: {
+      'Accept': 'application/json',
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ email, password }),
